@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${artifactId}
+  namespace: juliaaano
+  labels:
+    app: nginx
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: ${artifactId}
+  template:
+    metadata:
+      labels:
+        app: ${artifactId}
+    spec:
+      containers:
+      - name: app
+        image: juliaaano/${artifactId}:${version}
+        ports:
+        - containerPort: 4567
+        volumeMounts:
+        - name: sample-volume
+          mountPath: /app/sample-volume
+      volumes:
+      - name: sample-volume
+        emptyDir: {}

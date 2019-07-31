@@ -1,0 +1,57 @@
+language: java
+
+jdk:
+  - openjdk11
+
+services:
+  - docker
+
+cache:
+  directories:
+    - "$HOME/.m2"
+
+env:
+  global:
+    - secure: <-- travis encrypt DOCKERHUB_USR="docker hub username" -->
+    - secure: <-- travis encrypt DOCKERHUB_PWD="docker hub password" -->
+
+before_install:
+  - if [ -n "$TRAVIS_TAG" ]; then
+      mvn versions:set -DnewVersion=$TRAVIS_TAG;
+    fi
+
+install:
+  - mvn install --batch-mode --show-version -DskipTests=true
+  - docker build --file Dockerfile-travis --tag $TRAVIS_REPO_SLUG .
+
+before_script:
+  docker run --rm --name ${artifactId} --detach --publish 4567:4567 $TRAVIS_REPO_SLUG
+
+script:
+  - mvn test --batch-mode
+  - curl -i http://localhost:4567/hello
+
+after_success:
+  - docker login --username $DOCKERHUB_USR --password $DOCKERHUB_PWD;
+  - if [ -n "$TRAVIS_TAG" ]; then
+      docker tag $TRAVIS_REPO_SLUG $TRAVIS_REPO_SLUG:$TRAVIS_TAG;
+      docker push $TRAVIS_REPO_SLUG:$TRAVIS_TAG;
+    elif [ "$TRAVIS_BRANCH" == "master" ]; then
+      docker push $TRAVIS_REPO_SLUG;
+    fi
+
+deploy:
+  provider: releases
+  api_key:
+    secure: <-- travis encrypt github-personal-token-with_public_repo -->
+  file_glob: true
+  file:
+    - target/app-*.jar
+    - target/${artifactId}-*.jar
+    - target/${artifactId}-*.jar.asc
+  skip_cleanup: true
+  on:
+    repo: juliaaano/${artifactId}
+    branch: master
+    tags: true
+    jdk: openjdk11

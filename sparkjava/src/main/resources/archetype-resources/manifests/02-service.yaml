@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${artifactId}
+  namespace: juliaaano
+spec:
+  selector:
+    app: ${artifactId}
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 4567
