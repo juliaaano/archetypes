@@ -43,7 +43,7 @@ after_success:
 deploy:
   provider: releases
   api_key:
-    secure: <-- travis encrypt github-personal-token-with_public_repo -->
+    secure: <-- travis encrypt github-personal-token-with-public_repo -->
   file_glob: true
   file:
     - target/app-*.jar

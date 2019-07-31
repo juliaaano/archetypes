@@ -24,5 +24,5 @@ mvn archetype:generate -DarchetypeGroupId=com.juliaaano -DarchetypeArtifactId=sp
 ```
 * Full command:
 ```
-mvn archetype:generate -DarchetypeGroupId=com.juliaaano -DarchetypeArtifactId=sparkjava-archetype -DarchetypeVersion=1.0.0-SNAPSHOT -DgroupId=my.group -DartifactId=my-artefifact -Dversion=1.0.0-SNAPSHOT
+mvn archetype:generate -DarchetypeGroupId=com.juliaaano -DarchetypeArtifactId=sparkjava-archetype -DarchetypeVersion=1.0.0-SNAPSHOT -DgroupId=my.group -DartifactId=my-arfifact -Dversion=1.0.0-SNAPSHOT
 ```
