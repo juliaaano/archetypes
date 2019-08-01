@@ -6,9 +6,6 @@ services:
       context: .
     environment:
       LOG_LEVEL: ${LOG_LEVEL:-debug}
-    ports:
-      - target: 4567
-        published: 8000
     networks:
       - sample-network
     volumes:

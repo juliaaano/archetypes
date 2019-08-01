@@ -19,6 +19,4 @@ COPY --from=builder app/app.jar app/app.jar
 
 WORKDIR /app
 
-EXPOSE 4567
-
 CMD ["java", "-jar", "app.jar"]
