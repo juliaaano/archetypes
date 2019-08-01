@@ -8,7 +8,7 @@ A quick start for the development of new Java applications. :ok_hand:
 * **Istio** ingress gateway and virtual service definitions.
 * **Travis** CI pipeline with automated GitHub releases and Docker build and push.
 * **Spark Java's** smart and simple http endpoints.
-* SLF4J and logback setup.
+* SLF4J and Logback setup, with per-request log level filter.
 * Additional **Log4j2** YAML config with several features.
 * Rich **Maven** setup required by Maven Central (including GPG jar sign).
 * Prints ascii banner at application startup.

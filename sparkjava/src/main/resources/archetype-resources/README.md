@@ -13,7 +13,7 @@ A quick start for the development of new Java applications. :ok_hand:
 * **Istio** ingress gateway and virtual service definitions.
 * **Travis** CI pipeline with automated GitHub releases and Docker build and push.
 * **Spark Java's** smart and simple http endpoints.
-* SLF4J and logback setup.
+* SLF4J and Logback setup, with per-request log level filter.
 * Additional **Log4j2** YAML config with several features.
 * Rich **Maven** setup required by Maven Central (missing GPG jar sign).
 * Prints ascii banner at application startup.
@@ -21,7 +21,9 @@ A quick start for the development of new Java applications. :ok_hand:
 ${hash}${hash} Docker
 ```
 docker-compose up
-curl http://localhost:8000/hello
+curl http://localhost:8000/status
+curl -X POST http://localhost:8000/api/greeting -d '{"name": "John", "surname":"Smith"}'
+curl -i -X POST http://localhost:8000/api/greeting -d '{"name": "John", "surname":"Smith"}' -H "X-Request-ID: myCorrelationID" -H "X-Log-Level: DEBUG"
 ```
 
 ${hash}${hash} Kubernetes and Istio
