@@ -13,7 +13,7 @@ A quick start for the development of new Java applications. :ok_hand:
 * Rich **Maven** setup required by Maven Central (missing GPG jar sign).
 * Prints ascii banner at application startup.
 
-${hash}${hash} Docker
+${hash}${hash} Maven
 ```
 mvn package
 java -jar target/app.jar

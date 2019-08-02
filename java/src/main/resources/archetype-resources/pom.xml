@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
 
     <name>${artifactId}</name>
-    <description>A quick starter with Spark Java.</description>
+    <description>A quick starter for Java.</description>
     <url>https://github.com/juliaaano/${artifactId}</url>
     <inceptionYear/>
     <organization/>
@@ -55,7 +55,6 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <sparkjava.version>2.9.1</sparkjava.version>
         <slf4j.version>1.7.26</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <junit.version>4.12</junit.version>
