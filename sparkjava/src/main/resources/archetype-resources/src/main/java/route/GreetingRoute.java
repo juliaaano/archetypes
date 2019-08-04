@@ -1,21 +1,19 @@
 package ${package}.route;
 
-import com.google.gson.Gson;
 import ${package}.spark.JsonResponseTransformer;
 import ${package}.spark.RouteBuilder;
-
 import spark.Service;
 
 public class GreetingRoute implements RouteBuilder {
-
-    private static final Gson gson = new Gson();
 
     @Override
     public void configure(final Service spark, final String basePath) {
 
         spark.post(basePath + "/greeting", "application/json", (request, response) -> {
 
-            return new Greeting(gson.fromJson(request.body(), Person.class));
+            final RequestPayload<Person> person = new RequestPayload<>(request, Person.class);
+
+            return new Greeting(person.get());
 
         }, new JsonResponseTransformer());
     }

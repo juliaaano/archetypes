@@ -9,7 +9,7 @@ import static spark.utils.StringUtils.isNotEmpty;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.gson.JsonSyntaxException;
+import com.juliaaano.payload.InvalidMediaTypeException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,17 +60,23 @@ public class SparkContext {
             return "{\"message\":\"Resource not found\"}";
         });
 
-        spark.exception(JsonSyntaxException.class, (exception, request, response) -> {
-            response.status(400);
+        spark.exception(InvalidMediaTypeException.class, (exception, request, response) -> {
+            response.status(415);
             response.type("application/json");
-            response.body("{\"message\":\"Bad request\"}");
+            response.body("{\"message\":\"" + exception.getMessage() + "\"}");
             logger.debug("Exception mapper handled a {}.", exception.getClass().getName(), exception);
         });
 
         spark.exception(Exception.class, (exception, request, response) -> {
-            response.status(500);
+
+            if ("com.google.gson.JsonSyntaxException".equals(exception.getClass().getName())) {
+                response.status(400);
+                response.body("{\"message\":\"Bad request.\"}");
+            } else {
+                response.status(500);
+                response.body("{\"message\":\"" + exception.getMessage() + "\"}");
+            }
             response.type("application/json");
-            response.body("{\"message\":\"" + exception.getMessage() + "\"}");
             logger.error("Exception mapper handled a {}.", exception.getClass().getName(), exception);
         });
 
