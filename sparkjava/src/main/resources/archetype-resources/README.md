@@ -15,7 +15,6 @@ A quick start for the development of new Java applications. :ok_hand:
 * **Spark Java's** smart and simple http endpoints.
 * SLF4J and Logback setup, with per-request log level filter.
 * Additional **Log4j2** YAML config with several features.
-* Rich **Maven** setup required by Maven Central (missing GPG jar sign).
 * Prints ascii banner at application startup.
 
 ${hash}${hash} Docker

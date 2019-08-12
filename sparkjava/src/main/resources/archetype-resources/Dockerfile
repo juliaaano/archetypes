@@ -3,7 +3,7 @@ FROM maven:3-jdk-11-slim as builder
 
 COPY pom.xml /build/
 
-RUN mvn --file build/pom.xml --batch-mode package
+RUN mvn --file build/pom.xml --batch-mode dependency:go-offline
 
 COPY src /build/src/
 

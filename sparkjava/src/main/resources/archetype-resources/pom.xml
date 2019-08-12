@@ -6,7 +6,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- <parent/> -->
+    <!-- <parent /> -->
 
     <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
@@ -16,8 +16,8 @@
     <name>${artifactId}</name>
     <description>A quick starter with Spark Java.</description>
     <url>https://github.com/juliaaano/${artifactId}</url>
-    <inceptionYear/>
-    <organization/>
+    <inceptionYear />
+    <organization />
     <licenses>
         <license>
             <name>MIT License</name>
@@ -33,22 +33,22 @@
             <organizationUrl>https://www.juliaaano.com</organizationUrl>
         </developer>
     </developers>
-    <contributors/>
+    <contributors />
 
-    <mailingLists/>
+    <mailingLists />
 
-    <!-- <prerequisites/> -->
+    <!-- <prerequisites /> -->
 
-    <modules/>
+    <modules />
 
     <scm>
         <url>https://github.com/juliaaano/${artifactId}</url>
         <connection>scm:git:git@github.com:juliaaano/${artifactId}.git</connection>
         <developerConnection>scm:git:git@github.com:juliaaano/${artifactId}.git</developerConnection>
     </scm>
-    <issueManagement/>
-    <ciManagement/>
-    <distributionManagement/>
+    <issueManagement />
+    <ciManagement />
+    <distributionManagement />
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -62,10 +62,10 @@
         <logback.version>1.2.3</logback.version>
         <junit.version>4.12</junit.version>
         <assertj.version>3.12.2</assertj.version>
-        <maven.surefire.plugin.version>3.0.0-M3</maven.surefire.plugin.version>
-        <maven.shade.plugin.version>3.2.1</maven.shade.plugin.version>
-        <maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
-        <maven.source.plugin.version>3.1.0</maven.source.plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
+        <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
+        <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -85,6 +85,7 @@
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
             </dependency>
+            <!-- Logging -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -95,6 +96,7 @@
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
             </dependency>
+            <!-- Test -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -145,31 +147,31 @@
         </dependency>
     </dependencies>
 
-    <repositories/>
-    <pluginRepositories/>
+    <repositories />
+    <pluginRepositories />
 
     <build>
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven.surefire.plugin.version}</version>
+                    <version>${maven-surefire-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
-                    <version>${maven.shade.plugin.version}</version>
+                    <version>${maven-shade-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${maven.javadoc.plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>${maven.source.plugin.version}</version>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -199,40 +201,16 @@
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                     <transformers>
                         <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                            <mainClass>${groupId}.AppBootstrap</mainClass>
+                            <mainClass>${package}.AppBootstrap</mainClass>
                         </transformer>
                     </transformers>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
-    <reporting/>
+    <reporting />
 
-    <profiles/>
+    <profiles />
 
 </project>
