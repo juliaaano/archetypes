@@ -20,9 +20,9 @@ A quick start for the development of new Java applications. :ok_hand:
 ${hash}${hash} Docker
 ```
 docker-compose up
-curl http://localhost:8000/status
-curl -X POST http://localhost:8000/api/greeting -d '{"name": "John", "surname":"Smith"}'
-curl -i -X POST http://localhost:8000/api/greeting -d '{"name": "John", "surname":"Smith"}' -H "X-Request-ID: myCorrelationID" -H "X-Log-Level: DEBUG"
+curl -i http://localhost:8000/status
+curl -i -X POST http://localhost:8000/api/greeting -d '{"name": "John", "surname":"Smith"}' -H "Content-Type: application/json"
+curl -i -X POST http://localhost:8000/api/greeting -d '{"name": "John", "surname":"Smith"}' -H "Content-Type: application/json" -H "X-Request-ID: myCorrelationID" -H "X-Log-Level: DEBUG"
 ```
 
 ${hash}${hash} Kubernetes and Istio

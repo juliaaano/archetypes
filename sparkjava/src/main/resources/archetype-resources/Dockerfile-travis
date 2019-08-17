@@ -1,6 +1,8 @@
 FROM openjdk:11-jre-slim
 
-COPY target/app-*.jar app/app.jar
+ARG JAR_PATH=target
+
+COPY ${JAR_PATH}/app-*.jar app/app.jar
 
 WORKDIR /app
 
