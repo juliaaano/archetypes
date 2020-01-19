@@ -3,6 +3,7 @@ package ${package};
 import static ${package}.AsciiBanner.asciiBanner;
 
 import ${package}.route.GreetingRoute;
+import ${package}.route.HostNameRoute;
 import ${package}.spark.SparkContext;
 import ${package}.spark.SparkContextConfig;
 
@@ -23,6 +24,7 @@ public class AppBootstrap {
 
         // Comment out any of this entries to disable the respective routes.
         context.addRouteBuilder(new GreetingRoute());
+        context.addRouteBuilder(new HostNameRoute());
     }
 
     private static SparkContext createSparkContext() {
