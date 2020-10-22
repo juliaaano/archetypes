@@ -4,6 +4,7 @@ A quick start for the development of new Java applications. :ok_hand:
 
 * Container-ready with **Docker** and Docker Compose configuration.
 * Docker **builder** pattern with caching of Maven dependencies.
+* Red Hat OpenShift container deployment.
 * Basic **Kubernetes** deployment and service definitions.
 * **Istio** ingress gateway and virtual service definitions.
 * **Travis** CI pipeline with automated GitHub releases and Docker build and push.
