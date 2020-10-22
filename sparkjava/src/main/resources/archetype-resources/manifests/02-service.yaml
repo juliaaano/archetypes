@@ -2,7 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ${artifactId}
-  namespace: juliaaano
+  labels:
+    app: ${artifactId}
 spec:
   selector:
     app: ${artifactId}
