@@ -57,7 +57,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <sparkjava.version>2.9.1</sparkjava.version>
         <payload.version>1.1.0</payload.version>
-        <gson.version>2.8.6</gson.version>
+        <gson.version>2.8.9</gson.version>
         <slf4j.version>1.7.30</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <junit.version>5.6.0</junit.version>
